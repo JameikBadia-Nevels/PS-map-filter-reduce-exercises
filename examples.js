@@ -8,14 +8,14 @@ let transformedArray = myArray.map((number)=>{
 let evens = myArray.filter((number)=>{
     return number %2 == 0
 })
-// console.log(evens)
+console.log(evens)
 
 
 let flattenArray = myArray.reduce((acc, cur)=>{
     // console.log(acc, cur)
     return acc + cur
 })
-// console.log(flattenArray)
+console.log(flattenArray)
 
 function reducer(array){
     //write a function that takes an array of numbers and returns the sum of all numbers 
@@ -26,7 +26,7 @@ function reducer(array){
     return sum
 }
 
-// console.log(reducer(myArray))
+console.log(reducer(myArray))
 
 
 

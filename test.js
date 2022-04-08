@@ -26,7 +26,13 @@ const transformersMap = () => {
           team: 'Decepticon'
         }
       ];
+      let transformerForm = transformers.map(transformer => transformer.form)
+    return transformerForm
 }
+
+console.log(transformersMap())
+
+
 /*
 Filter Transformers
 Using filter, return an array of transformer objects that have the 'team' property of 'Autobot'
@@ -67,8 +73,13 @@ const transformersFilter = () => {
           team: 'Decepticon'
         }
       ]
+      let transformerFilter = transformers.filter(transformer =>{
+        return transformer.team === 'Autobot'
+    })
+    return transformerFilter
 
 }
+console.log(transformersFilter())
 
 /*
 Reduce Transformers
@@ -101,8 +112,19 @@ const reduceTransformers = () => {
           team: 'Decepticon'
         }
       ]
-}
 
+      let transformerReduce = transformers.reduce((acc, cur) =>{ 
+        const team = cur.team
+        if(acc[team]){
+          acc[team]++
+        }else{
+          acc[team] = 1
+        }
+        return acc
+  },  {})
+  return transformerReduce
+}
+console.log(reduceTransformers())
 
 
 /*
@@ -115,9 +137,12 @@ Use filter and reduce
 //result: 42
 const sumPositiveElement = () => {
     const input = [ 1, -4, 12, 0, -3, 29, -150]
+    let sumOFpos = input.map(number => number)
+    .filter(number => number > 0)
+    .reduce((acc,cur) => acc +cur)
+    return sumOFpos
 }
-
-
+console.log(sumPositiveElement())
 
 /* 
 Calculate median and mean
@@ -128,7 +153,19 @@ Use: reduce, sort, Math.abs
 //result: { mean: 38.5, median: 32 }
 const medianMean = () => {
     const input = [12, 46, 32, 64]
+    // let meanNdmedian = input.map(number => number)
+    // .reduce((acc, cur) => acc + cur)
+    // input.sort()
+  sum = 0 
+    for( var i = 0; i < input.length; i++ ){
+      sum += parseInt( input[i], 10 )
+  }
+  var avg = sum/input.length
+  return avg
+    // console.log(getMean())
+
 }
+console.log(medianMean())
 
 
 /*
@@ -139,7 +176,15 @@ Use .map , .split , .join
 //result: 'GRRM'
 const nameInitials = () => {
     const input = 'George Raymond Richard Martin';
+
+   let intial = input
+   .split(' ')
+   .map(word => word[0])
+   .join('')
+
+  return intial
 }
+console.log(nameInitials())
 
 /*
 Age difference from the youngest and oldest
@@ -171,5 +216,15 @@ const ageDifference = () => {
           age: 65,
         }
       ];
+
+      const differenceInAges = (ages) => {
+        ages.sort((a, b) => a - b);
+        
+        return [ages[0], ages[ages.length - 2],  ];
+      };
+      return differenceInAges(input)
+
+
 }
+console.log(ageDifference())
 
